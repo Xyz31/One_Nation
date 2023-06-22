@@ -8,7 +8,7 @@ class BottomRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     return Container(
-      color: Colors.white24,
+      color: Colors.white,
       padding: EdgeInsets.all(width / 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -19,19 +19,19 @@ class BottomRow extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Join',
+                  'Join With Us',
                   style: TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.w600,
+                      fontSize: 50,
+                      fontWeight: FontWeight.w700,
                       letterSpacing: 2,
-                      color: Colors.white),
+                      color: Colors.black),
                 ),
                 SizedBox(
                   height: 20,
                 ),
                 Text(
-                  'The [overflow] property\'s behavior is affected by the [softWrap] argument. If the [softWrap] is true or null, t',
-                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.w100),
+                  'Investing in Minds, Transforming Lives: Educating Underprivileged Children.',
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w200),
                 )
               ],
             ),

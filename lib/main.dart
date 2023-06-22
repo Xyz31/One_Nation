@@ -1,11 +1,24 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:one_nation/Desktop/home_dekstop.dart';
+import 'package:one_nation/Sevices/service_home.dart';
 import 'package:one_nation/Widgets/app_bar.dart';
+import 'package:one_nation/Widgets/donate.dart';
 
 import 'Mobile/home_mobile.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp(
+    options: const FirebaseOptions(
+        apiKey: "AIzaSyAEI2yVJF_ooXaYl7ya8vbAA2K8ze3nEPI",
+        authDomain: "futter-web1.firebaseapp.com",
+        projectId: "futter-web1",
+        storageBucket: "futter-web1.appspot.com",
+        messagingSenderId: "362107198579",
+        appId: "1:362107198579:web:396647095eeb29fe971e06",
+        measurementId: "G-RF675MY553"),
+  );
   runApp(const MyApp());
 }
 
@@ -21,6 +34,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
           fontFamily: 'Raleway'),
       home: const HomePage(),
     );
@@ -57,12 +71,12 @@ class _HomePageState extends State<HomePage> {
               ))
           : PreferredSize(
               preferredSize: Size(screenSize.width, 70),
-              child: DesktopAppbar()),
+              child: const DesktopAppbar()),
       body: LayoutBuilder(builder: (context, constraints) {
         if (constraints.maxWidth < 800) {
-          return Mobile();
+          return const Mobile();
         } else {
-          return Desktop();
+          return const Desktop();
         }
       }),
     );

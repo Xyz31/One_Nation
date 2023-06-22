@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:one_nation/Sevices/service_home.dart';
+import 'package:one_nation/Widgets/donate.dart';
 
 class DesktopAppbar extends StatefulWidget {
   //final context;
@@ -26,7 +29,7 @@ class _DesktopAppbarState extends State<DesktopAppbar> {
     var screenSize = MediaQuery.of(context).size;
 
     return Container(
-      color: Colors.white,
+      color: Colors.grey[300],
       child: Padding(
         padding: EdgeInsets.all(8),
         child: Row(
@@ -96,12 +99,17 @@ class _DesktopAppbarState extends State<DesktopAppbar> {
                         value ? _isHovering[1] = true : _isHovering[1] = false;
                       });
                     },
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                              builder: (context) => ServiceHome()));
+                    },
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          'History',
+                          'Services',
                           style: TextStyle(
                               color: _isHovering[1]
                                   ? Colors.cyan
@@ -194,18 +202,24 @@ class _DesktopAppbarState extends State<DesktopAppbar> {
                       ],
                     ),
                   ),
-                  SizedBox(width: screenSize.width / 20),
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      ElevatedButton(onPressed: () {}, child: Text('Donate')),
-                    ],
-                  )
+                  SizedBox(width: screenSize.width / 35),
+                  /*
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (context) => DonatePage()));
+                      },
+                      child: Text('Donate'))
+                    
+
+
+
+                    */
                 ],
               ),
             ),
-
-            //),
           ],
         ),
       ),

@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:one_nation/Widgets/donate.dart';
 
 class DataContainer extends StatefulWidget {
   const DataContainer({super.key});
@@ -54,7 +56,10 @@ class _DataContainerState extends State<DataContainer> {
             height: 10,
           ),
           ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    CupertinoPageRoute(builder: (context) => DonatePage()));
+              },
               child: const Text(
                 'Donate Now',
                 style: TextStyle(

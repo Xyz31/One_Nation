@@ -40,11 +40,11 @@ class _StartPageState extends State<StartPage> {
                     wordSpacing: 3,
                     letterSpacing: 2),
               ),
-              Text(
-                'Below Poverty Line',
-                style: TextStyle(
-                    fontSize: 20, color: Colors.white, letterSpacing: 2),
-              )
+              // Text(
+              //   'Below Poverty Line',
+              //   style: TextStyle(
+              //       fontSize: 20, color: Colors.white, letterSpacing: 2),
+              // )
             ],
           ),
         )

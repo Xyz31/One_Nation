@@ -19,7 +19,7 @@ class _FeaturedTileState extends State<FeaturedTile> {
           children: [
             Container(
               //height: 200,
-              color: Colors.amber,
+              color: Colors.green,
               padding: const EdgeInsets.all(8),
               width: 240,
               child: const Column(
@@ -43,21 +43,21 @@ class _FeaturedTileState extends State<FeaturedTile> {
             ),
             Container(
               //height: 200,
-              color: Colors.amberAccent,
+              color: Colors.blue,
               padding: const EdgeInsets.all(8),
               width: 240,
               child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Education',
+                      'Vision',
                       style: TextStyle(
                         fontSize: 30,
                         color: Colors.white,
                       ),
                     ),
                     Text(
-                      'Technology is the application of knowledge for achieving practical goals in a reproducible way.',
+                      'Empowering Dreams, Unlocking Potential, Erasing Boundaries,Breaking Limits and Achieving Goals',
                       style: TextStyle(
                         fontSize: 15,
                         color: Colors.white,
@@ -67,21 +67,21 @@ class _FeaturedTileState extends State<FeaturedTile> {
             ),
             Container(
               //height: 200,
-              color: Colors.amberAccent,
+              color: Colors.red,
               padding: const EdgeInsets.all(8),
               width: 240,
               child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Education',
+                      'Helping',
                       style: TextStyle(
                         fontSize: 30,
                         color: Colors.white,
                       ),
                     ),
                     Text(
-                      'Technology is the application of knowledge for achieving practical goals in a reproducible way.',
+                      'Below Poverty Line is enchmark used by the government of India economic disadvantage.',
                       style: TextStyle(
                         fontSize: 15,
                         color: Colors.white,
