@@ -50,8 +50,9 @@ class _ServiceHomeState extends State<ServiceHome> {
     final width = MediaQuery.of(context).size.width;
 
     return Scaffold(
+        backgroundColor: Colors.grey[300],
         appBar: AppBar(
-          leading: Container(),
+          //leading: Container(),
           backgroundColor: Colors.grey[200],
           centerTitle: true,
           title: Text(
@@ -59,74 +60,134 @@ class _ServiceHomeState extends State<ServiceHome> {
             style: TextStyle(color: Colors.grey[800]),
           ),
         ),
-        body: Container(
-          color: Colors.grey,
-          padding: EdgeInsets.symmetric(horizontal: width / 20, vertical: 30),
+        body: SizedBox(
+          width: width,
           child: SingleChildScrollView(
             child: Column(children: [
               for (int i = 0; i < 4; i++)
                 Card(
+                  elevation: 5,
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 5),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
                     child: Container(
-                      padding: EdgeInsets.all(8),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          SizedBox(
-                            width: 300,
-                            height: 200,
-                            child: Card(
-                              child: Image.asset(
-                                images.elementAt(i),
-                                fit: BoxFit.fill,
-                              ),
+                      padding: const EdgeInsets.all(8),
+                      child: width < 800
+                          ? Column(
+                              children: [
+                                SizedBox(
+                                  width: 300,
+                                  height: 200,
+                                  child: Card(
+                                    elevation: 8,
+                                    child: Image.asset(
+                                      images.elementAt(i),
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                ),
+                                Text(
+                                  services.elementAt(i),
+                                  style: const TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Container(
+                                  height: 40,
+                                  width: 300,
+                                  padding: const EdgeInsets.all(1),
+                                  margin: const EdgeInsets.only(top: 10),
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey[350],
+                                    borderRadius: BorderRadius.circular(
+                                        10), // Adjust the radius as needed
+                                  ),
+                                  child: CupertinoButton(
+                                      onPressed: () {
+                                        switch (i) {
+                                          case 0:
+                                            navigateToPetPage();
+                                            break;
+                                          case 1:
+                                            navigateToPlantPage();
+                                            break;
+                                          case 2:
+                                            navigateToScholarshipPage();
+                                            break;
+                                          case 3:
+                                            navigateToDisabilityPage();
+                                            break;
+                                        }
+                                      },
+                                      child: const Text(
+                                        'Click to Explore',
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w300,
+                                            letterSpacing: 2),
+                                      )),
+                                )
+                              ],
+                            )
+                          : Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                SizedBox(
+                                  width: 300,
+                                  height: 200,
+                                  child: Card(
+                                    child: Image.asset(
+                                      images.elementAt(i),
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                ),
+                                Text(
+                                  services.elementAt(i),
+                                  style: const TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Container(
+                                  height: 50,
+                                  width: 300,
+                                  padding: const EdgeInsets.all(4),
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey[700],
+                                    borderRadius: BorderRadius.circular(
+                                        25), // Adjust the radius as needed
+                                  ),
+                                  child: ElevatedButton(
+                                      onPressed: () {
+                                        switch (i) {
+                                          case 0:
+                                            navigateToPetPage();
+                                            break;
+                                          case 1:
+                                            navigateToPlantPage();
+                                            break;
+                                          case 2:
+                                            navigateToScholarshipPage();
+                                            break;
+                                          case 3:
+                                            navigateToDisabilityPage();
+                                            break;
+                                        }
+                                      },
+                                      child: const Text(
+                                        'Click to Explore',
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w300,
+                                            letterSpacing: 2),
+                                      )),
+                                )
+                              ],
                             ),
-                          ),
-                          Text(
-                            services.elementAt(i),
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Container(
-                            height: 50,
-                            width: 300,
-                            padding: EdgeInsets.all(4),
-                            decoration: BoxDecoration(
-                              color: Colors.grey[700],
-                              borderRadius: BorderRadius.circular(
-                                  25), // Adjust the radius as needed
-                            ),
-                            child: ElevatedButton(
-                                onPressed: () {
-                                  switch (i) {
-                                    case 0:
-                                      navigateToPetPage();
-                                      break;
-                                    case 1:
-                                      navigateToPlantPage();
-                                      break;
-                                    case 2:
-                                      navigateToScholarshipPage();
-                                      break;
-                                    case 3:
-                                      navigateToDisabilityPage();
-                                      break;
-                                  }
-                                },
-                                child: Text(
-                                  'Click to Explore',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w300,
-                                      letterSpacing: 2),
-                                )),
-                          )
-                        ],
-                      ),
                     ),
                   ),
                 ),

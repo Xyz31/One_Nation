@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:one_nation/Widgets/data_container.dart';
 
 class MiddleRow extends StatelessWidget {
   const MiddleRow({super.key});
@@ -11,7 +10,7 @@ class MiddleRow extends StatelessWidget {
       padding:
           EdgeInsets.symmetric(horizontal: width / 12, vertical: width / 15),
       child: Container(
-        color: Colors.white,
+        color: Colors.white38,
         child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Container(

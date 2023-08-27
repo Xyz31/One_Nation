@@ -29,30 +29,32 @@ class _DesktopAppbarState extends State<DesktopAppbar> {
     var screenSize = MediaQuery.of(context).size;
 
     return Container(
-      color: Colors.grey[300],
+      color: Colors.white38,
       child: Padding(
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             // Expanded(
             //child:
-            SizedBox(
-              width: screenSize.width / 9,
-            ),
-            const Text(
-              'One Nation',
-              style: TextStyle(
-                color: Colors.cyan,
-                fontSize: 26,
-                fontWeight: FontWeight.w900,
-                letterSpacing: 3,
+            // SizedBox(
+            //   width: screenSize.width / 9,
+            // ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: screenSize.width / 11),
+              child: const Text(
+                'ONE NATION',
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontSize: 36,
+                  fontWeight: FontWeight.w900,
+                  letterSpacing: 3,
+                ),
               ),
             ),
-            SizedBox(width: screenSize.width / 15),
             Padding(
-              padding: EdgeInsets.only(right: 20),
+              padding: const EdgeInsets.only(right: 20),
               child: Row(
                 children: [
                   InkWell(
@@ -103,7 +105,7 @@ class _DesktopAppbarState extends State<DesktopAppbar> {
                       Navigator.push(
                           context,
                           CupertinoPageRoute(
-                              builder: (context) => ServiceHome()));
+                              builder: (context) => const ServiceHome()));
                     },
                     child: Column(
                       mainAxisSize: MainAxisSize.min,

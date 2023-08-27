@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class PlantPage extends StatelessWidget {
+class PlantPage extends StatefulWidget {
   PlantPage({super.key});
 
+  @override
+  State<PlantPage> createState() => _PlantPageState();
+}
+
+class _PlantPageState extends State<PlantPage> {
   Set<String> links = {
     'https://www.odanadi.org/',
     'https://mysore.nic.in/en/horticulture/',
     'http://Green.Mysore.org',
   };
+
   Set<String> names = {
     'Odanadi Seva Samsthe',
     'Mysore Horticulture Society',
@@ -20,9 +26,10 @@ class PlantPage extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
       //appBar: AppBar(),
+      backgroundColor: Colors.grey[600],
       body: SingleChildScrollView(
         child: Container(
-          color: Colors.grey,
+          color: Colors.grey[200],
           child: Column(
             children: [
               Stack(
@@ -36,6 +43,16 @@ class PlantPage extends StatelessWidget {
                       fit: BoxFit.fill,
                     ),
                   ),
+                  // back button
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: IconButton(
+                        color: Colors.cyan,
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: const Icon(Icons.arrow_back)),
+                  ),
                   // Text at the bottom
                   Container(
                     color: Colors.black.withOpacity(0.5),
@@ -43,7 +60,7 @@ class PlantPage extends StatelessWidget {
                     //width: 200,
                     child: const Center(
                       child: Text(
-                        'Pet Service Providers',
+                        'Plant Service Providers',
                         style: TextStyle(
                           fontSize: 30,
                           color: Colors.white,
@@ -53,7 +70,7 @@ class PlantPage extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               // Other widgets below the image
@@ -71,8 +88,8 @@ class PlantPage extends StatelessWidget {
                         children: [
                           Text(
                             names.elementAt(i),
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
+                            style: const TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.bold),
                           ),
                           GestureDetector(
                             onTap: () {

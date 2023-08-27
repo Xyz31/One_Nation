@@ -2,12 +2,10 @@ import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:confetti/confetti.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:one_nation/Widgets/congratulations.dart';
 
 class VolunteerJoin extends StatefulWidget {
   const VolunteerJoin({super.key});
@@ -30,8 +28,13 @@ class _VolunteerJoinState extends State<VolunteerJoin> {
 
     if (name.isEmpty || email.isEmpty || number.isEmpty || feedback.isEmpty) {
       final snackBar = SnackBar(
-        content: const Text('Fill All The Details!'),
-        backgroundColor: (Colors.black12),
+        content: const Padding(
+          padding: EdgeInsets.all(16.0), // Customize the padding as needed
+          child: Text('Fill All The Details!'),
+        ),
+        // content: const Text('Fill All The Details!'),
+        backgroundColor: (Colors.transparent),
+        // showCloseIcon: true,
         action: SnackBarAction(
           label: 'dismiss',
           backgroundColor: Colors.redAccent,
@@ -59,7 +62,27 @@ class _VolunteerJoinState extends State<VolunteerJoin> {
           },
         ),
       );
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.black12,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(16.0),
+              topRight: Radius.circular(16.0),
+            ),
+          ),
+          content: Container(
+            child: snackBar,
+            decoration: const BoxDecoration(
+              color: Colors.black12,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(16.0),
+                topRight: Radius.circular(16.0),
+              ),
+            ),
+          ),
+        ),
+      );
       return;
     }
 
@@ -153,10 +176,10 @@ class _VolunteerJoinState extends State<VolunteerJoin> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(message),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               ConfettiWidget(
                 confettiController:
-                    ConfettiController(duration: Duration(seconds: 2)),
+                    ConfettiController(duration: const Duration(seconds: 2)),
                 blastDirection: -pi / 2,
                 emissionFrequency: 0.05,
                 numberOfParticles: 20,
@@ -168,7 +191,7 @@ class _VolunteerJoinState extends State<VolunteerJoin> {
       },
     );
 
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 2), () {
       Navigator.of(context).pop();
     });
   }
@@ -177,15 +200,15 @@ class _VolunteerJoinState extends State<VolunteerJoin> {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     return Container(
-      width: width * 0.4,
+      width: width > 800 ? width * 0.4 : width * 0.8,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           //Meme
-          Text(
+          const Text(
             'Become a Member',
             style: TextStyle(
-                fontSize: 50, fontWeight: FontWeight.bold, color: Colors.black),
+                fontSize: 40, fontWeight: FontWeight.bold, color: Colors.black),
           ),
           //Name
           SizedBox(
@@ -279,7 +302,17 @@ class _VolunteerJoinState extends State<VolunteerJoin> {
           Padding(
             padding: const EdgeInsets.only(top: 20, bottom: 20),
             child: ElevatedButton(
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.grey)),
                 onPressed: () async {
+                  ConfettiWidget(
+                    confettiController: ConfettiController(
+                        duration: const Duration(seconds: 2)),
+                    blastDirection: -pi / 2,
+                    emissionFrequency: 0.05,
+                    numberOfParticles: 20,
+                    gravity: 0.05,
+                  );
                   await _addvolunteer(context);
 
                   // // Navigator.push(

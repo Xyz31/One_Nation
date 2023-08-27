@@ -37,7 +37,7 @@ class _CongratulationsState extends State<Congratulations> {
     _controller.play();
 
     // Stop the confetti after 5 seconds
-    Timer(Duration(seconds: 1), () {
+    Timer(const Duration(seconds: 1), () {
       _controller.stop();
     });
   }
@@ -55,7 +55,7 @@ class _CongratulationsState extends State<Congratulations> {
         maxBlastForce: 10,
         minBlastForce: 5,
         gravity: 0.1,
-        colors: [
+        colors: const [
           Colors.pink,
           Colors.red,
           Colors.blue,

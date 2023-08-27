@@ -19,7 +19,7 @@ class ScholarshipPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
-      //appBar: AppBar(),
+      appBar: AppBar(),
       body: SingleChildScrollView(
         child: Container(
           color: Colors.grey,
@@ -53,7 +53,7 @@ class ScholarshipPage extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               // Other widgets below the image
@@ -66,29 +66,59 @@ class ScholarshipPage extends StatelessWidget {
                     child: SizedBox(
                       height: 50,
                       width: width * 0.8,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            names.elementAt(i),
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              _launchURL(links.elementAt(i));
-                            },
-                            child: const Text(
-                              'Click here',
-                              style: TextStyle(
-                                fontSize: 13,
-                                color: Colors.blue,
-                                decoration: TextDecoration.underline,
-                              ),
+                      child: width > 800
+                          ? Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              // mainAxisSize: MainAxisSize.max,
+                              //crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  names.elementAt(i),
+                                  style: const TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    _launchURL(links.elementAt(i));
+                                  },
+                                  child: const Text(
+                                    'Click here',
+                                    style: TextStyle(
+                                      fontSize: 13,
+                                      color: Colors.blue,
+                                      decoration: TextDecoration.underline,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            )
+                          : Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              // mainAxisSize: MainAxisSize.max,
+                              //crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  names.elementAt(i),
+                                  style: const TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    _launchURL(links.elementAt(i));
+                                  },
+                                  child: const Text(
+                                    'Click here',
+                                    style: TextStyle(
+                                      fontSize: 13,
+                                      color: Colors.blue,
+                                      decoration: TextDecoration.underline,
+                                    ),
+                                  ),
+                                )
+                              ],
                             ),
-                          )
-                        ],
-                      ),
                     ),
                   ),
                 )

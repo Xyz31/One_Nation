@@ -200,7 +200,7 @@ class DonatePage extends StatelessWidget {
               Container(
                 height: 50,
                 width: 200,
-                padding: EdgeInsets.all(4),
+                padding: const EdgeInsets.all(4),
                 decoration: BoxDecoration(
                   color: Colors.grey[700],
                   borderRadius:
@@ -210,7 +210,7 @@ class DonatePage extends StatelessWidget {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: Text(
+                    child: const Text(
                       'Go Back',
                       style: TextStyle(
                           color: Colors.black,

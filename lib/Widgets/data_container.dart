@@ -57,8 +57,10 @@ class _DataContainerState extends State<DataContainer> {
           ),
           ElevatedButton(
               onPressed: () {
-                Navigator.push(context,
-                    CupertinoPageRoute(builder: (context) => DonatePage()));
+                Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                        builder: (context) => const DonatePage()));
               },
               child: const Text(
                 'Donate Now',

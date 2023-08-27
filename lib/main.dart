@@ -1,9 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:one_nation/Desktop/home_dekstop.dart';
-import 'package:one_nation/Sevices/service_home.dart';
+import 'package:one_nation/Mobile/appbar_mobile.dart';
+
 import 'package:one_nation/Widgets/app_bar.dart';
-import 'package:one_nation/Widgets/donate.dart';
 
 import 'Mobile/home_mobile.dart';
 
@@ -49,26 +49,67 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  static const Color gradientStartColor = Color(0xff11998e);
+  static const Color gradientEndColor = Color(0xff0575E6);
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.grey[500],
+      // drawerScrimColor: Colors.amber,
+
+      backgroundColor: Colors.grey[350],
+      drawer: Drawer(
+        child: Container(
+            padding: const EdgeInsets.all(8),
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                  end: Alignment.centerRight,
+                  begin: Alignment.topLeft,
+                  colors: [
+                    Colors.cyan,
+                    Color.fromARGB(255, 24, 226, 226),
+                    Colors.cyan
+                  ]),
+            ),
+            child: const AppBarMobile()),
+      ),
       appBar: screenSize.width < 800
-          ? AppBar(
-              iconTheme: const IconThemeData(color: Colors.white),
-              //backgroundColor: Colors.white.withOpacity(_opacity),
-              elevation: 0,
-              centerTitle: true,
-              title: const Text(
-                'Author',
-                style: TextStyle(
-                  color: Colors.black26,
-                  fontSize: 26,
-                  fontWeight: FontWeight.w900,
-                  letterSpacing: 3,
-                ),
-              ))
+          ? PreferredSize(
+              preferredSize: Size(MediaQuery.of(context).size.width, 70),
+              child: Padding(
+                padding: const EdgeInsets.all(8),
+                child: AppBar(
+                    scrolledUnderElevation: 10,
+                    backgroundColor: Colors.grey[300],
+                    //iconTheme: const IconThemeData(color: Colors.grey),
+                    //backgroundColor: Colors.white.withOpacity(_opacity),
+                    elevation: 0,
+                    centerTitle: true,
+                    flexibleSpace: Container(
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(20),
+                            bottomLeft: Radius.circular(20),
+                            bottomRight: Radius.circular(20)),
+                        gradient: LinearGradient(colors: [
+                          Color.fromARGB(255, 15, 192, 215),
+                          Colors.cyan,
+                          Color.fromARGB(255, 15, 192, 215),
+                        ]),
+                      ),
+                    ),
+                    title: const Text(
+                      'ONE NATION',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 26,
+                        fontWeight: FontWeight.w900,
+                        letterSpacing: 3,
+                      ),
+                    )),
+              ),
+            )
           : PreferredSize(
               preferredSize: Size(screenSize.width, 70),
               child: const DesktopAppbar()),

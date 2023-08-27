@@ -17,14 +17,15 @@ class PetPage extends StatelessWidget {
     'MYSORE PINJARAPOLE SOCIETY',
     'Animal Welfare Institute (AWI)',
     'Humane Society of the United States (HSUS)',
-    'People for the Ethical Treatment of Animals (PETA)',
+    'People for the Ethical Treatment of Animals (PETA) ',
     'Best Friends Animal Society',
   };
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
-      //appBar: AppBar(),
+      extendBody: true,
+      appBar: AppBar(),
       body: SingleChildScrollView(
         child: Container(
           color: Colors.grey,
@@ -40,6 +41,18 @@ class PetPage extends StatelessWidget {
                       'Assets/Images/pet2.jpg',
                       fit: BoxFit.fill,
                     ),
+                  ),
+                  // back button
+                  Container(
+                    // padding: EdgeInsets.only(top: 15, left: 15),
+                    // alignment: Alignment.topLeft,
+                    padding: const EdgeInsets.only(left: 10, top: 10),
+                    child: IconButton(
+                        color: Colors.white,
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: const Icon(Icons.arrow_back)),
                   ),
                   // Text at the bottom
                   Container(
@@ -58,7 +71,7 @@ class PetPage extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               // Other widgets below the image
@@ -68,16 +81,18 @@ class PetPage extends StatelessWidget {
                   elevation: 7,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: SizedBox(
+                    child: Container(
                       height: 50,
                       width: width * 0.8,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            names.elementAt(i),
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
+                          Container(
+                            child: Text(
+                              names.elementAt(i),
+                              style: const TextStyle(
+                                  fontSize: 10, fontWeight: FontWeight.bold),
+                            ),
                           ),
                           GestureDetector(
                             onTap: () {

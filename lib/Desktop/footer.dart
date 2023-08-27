@@ -27,7 +27,7 @@ class _FooterState extends State<Footer> {
         child: MediaQuery.of(context).size.width < 800
             ? Container(
                 margin: const EdgeInsets.only(top: 10),
-                child: Column(
+                child: const Column(
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -52,30 +52,30 @@ class _FooterState extends State<Footer> {
                         ),
                       ],
                     ),
-                    const Divider(
+                    Divider(
                       color: Colors.white,
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 20),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         InfoText(
                           type: 'Email',
-                          text: 'dylan@gmail.com',
+                          text: 'info_onenation@gmail.com',
                         ),
-                        const SizedBox(height: 5),
+                        SizedBox(height: 5),
                         InfoText(
                           type: 'Address',
-                          text: '128, Trymore Road, Delft, MN - 56124',
+                          text: '128, MG Road, Banglore, INDIA - 56124',
                         ),
                       ],
                     ),
-                    const Divider(
+                    Divider(
                       color: Colors.white,
                     ),
-                    const SizedBox(height: 20),
-                    const Text(
-                      'Copyright © 2021 | DBestech',
+                    SizedBox(height: 20),
+                    Text(
+                      'Copyright © 2023 | OneNation | Designed by Acrobot',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 14,
@@ -89,19 +89,19 @@ class _FooterState extends State<Footer> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      BottomBarColumn(
+                      const BottomBarColumn(
                         heading: 'ABOUT',
                         s1: 'Contact Us',
                         s2: 'About Us',
                         s3: 'Careers',
                       ),
-                      BottomBarColumn(
+                      const BottomBarColumn(
                         heading: 'HELP',
                         s1: 'Payment',
                         s2: 'Cancellation',
                         s3: 'FAQ\'s',
                       ),
-                      BottomBarColumn(
+                      const BottomBarColumn(
                         heading: 'SOCIAL',
                         s1: 'Facebook',
                         s2: 'Toutube',
@@ -112,17 +112,17 @@ class _FooterState extends State<Footer> {
                         width: 2,
                         height: 150,
                       ),
-                      Column(
+                      const Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           InfoText(
                             type: 'Email',
-                            text: 'info_onenation@gmail.com.com',
+                            text: 'info_onenation@gmail.com',
                           ),
-                          const SizedBox(height: 5),
+                          SizedBox(height: 5),
                           InfoText(
                             type: 'Address',
-                            text: '128, Trymore Road, Delft, MN - 56124',
+                            text: '128, MG Road, Banglore, INDIA - 56124',
                           ),
                         ],
                       ),
@@ -148,7 +148,8 @@ class BottomBarColumn extends StatelessWidget {
   final String s2;
   final String s3;
 
-  BottomBarColumn({
+  const BottomBarColumn({
+    super.key,
     required this.heading,
     required this.s1,
     required this.s2,
@@ -216,7 +217,7 @@ class InfoText extends StatelessWidget {
   final String type;
   final String text;
 
-  InfoText({required this.type, required this.text});
+  const InfoText({super.key, required this.type, required this.text});
 
   @override
   Widget build(BuildContext context) {

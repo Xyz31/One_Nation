@@ -19,10 +19,11 @@ class Disability extends StatelessWidget {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
-      // appBar: AppBar(),
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(),
       body: SingleChildScrollView(
         child: Container(
-          color: Colors.grey,
+          color: Colors.grey[300],
           child: Column(
             children: [
               Stack(
@@ -53,7 +54,7 @@ class Disability extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               // Other widgets below the image
@@ -71,8 +72,8 @@ class Disability extends StatelessWidget {
                         children: [
                           Text(
                             names.elementAt(i),
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
+                            style: const TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.bold),
                           ),
                           GestureDetector(
                             onTap: () {
