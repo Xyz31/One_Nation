@@ -61,7 +61,7 @@ class PetPage extends StatelessWidget {
                     //width: 200,
                     child: const Center(
                       child: Text(
-                        'Pet Service Providers',
+                        'plant Service Providers',
                         style: TextStyle(
                           fontSize: 30,
                           color: Colors.white,

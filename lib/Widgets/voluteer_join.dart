@@ -27,80 +27,24 @@ class _VolunteerJoinState extends State<VolunteerJoin> {
     String feedback = _feedbackcontroller.text;
 
     if (name.isEmpty || email.isEmpty || number.isEmpty || feedback.isEmpty) {
-      final snackBar = SnackBar(
-        content: const Padding(
-          padding: EdgeInsets.all(16.0), // Customize the padding as needed
-          child: Text('Fill All The Details!'),
-        ),
-        // content: const Text('Fill All The Details!'),
-        backgroundColor: (Colors.transparent),
-        // showCloseIcon: true,
-        action: SnackBarAction(
-          label: 'dismiss',
-          backgroundColor: Colors.redAccent,
-          disabledTextColor: Colors.amberAccent,
-          disabledBackgroundColor: Colors.redAccent,
-          onPressed: () {
-            ScaffoldMessenger.of(context).hideCurrentSnackBar();
-          },
-        ),
-      );
+      final snackBar =
+          ShowSnackBar(context, "Fill All The Details!", "Dismiss");
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
       return;
     }
-    if (number.length < 10) {
-      final snackBar = SnackBar(
-        content: const Text('Enter a valid 10 - digit number'),
-        backgroundColor: (Colors.black12),
-        action: SnackBarAction(
-          label: 'dismiss',
-          backgroundColor: Colors.redAccent,
-          disabledTextColor: Colors.amberAccent,
-          disabledBackgroundColor: Colors.redAccent,
-          onPressed: () {
-            ScaffoldMessenger.of(context).hideCurrentSnackBar();
-          },
-        ),
-      );
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: Colors.black12,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(16.0),
-              topRight: Radius.circular(16.0),
-            ),
-          ),
-          content: Container(
-            child: snackBar,
-            decoration: const BoxDecoration(
-              color: Colors.black12,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(16.0),
-                topRight: Radius.circular(16.0),
-              ),
-            ),
-          ),
-        ),
-      );
+
+    // Check Contact Number
+    if (number.length != 10 || !RegExp(r'^[0-9]+$').hasMatch(number)) {
+      final snackBar =
+          ShowSnackBar(context, "Enter a valid 10-digit number", "dismiss");
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
       return;
     }
 
     //check for correct email
     if (!email.endsWith('@gmail.com')) {
-      final snackBar = SnackBar(
-        content: const Text('Enter a valid mail which ends with @gmail.com'),
-        backgroundColor: (Colors.black12),
-        action: SnackBarAction(
-          label: 'dismiss',
-          backgroundColor: Colors.redAccent,
-          disabledTextColor: Colors.amberAccent,
-          disabledBackgroundColor: Colors.redAccent,
-          onPressed: () {
-            ScaffoldMessenger.of(context).hideCurrentSnackBar();
-          },
-        ),
-      );
+      final snackBar = ShowSnackBar(
+          context, "Enter a valid mail which ends with @gmail.com", 'Dismiss');
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
       return;
     }
@@ -120,7 +64,7 @@ class _VolunteerJoinState extends State<VolunteerJoin> {
         await instance.collection('Volunteers').doc(name).set(datacollected);
         showConfettiDialog(context, 'Congratulations \nYou Are Now a Member');
 
-        print('Successufully added');
+        debugPrint('Successufully added');
         _emailcontroller.clear();
         _feedbackcontroller.clear();
         _namecontroller.clear();
@@ -150,9 +94,27 @@ class _VolunteerJoinState extends State<VolunteerJoin> {
         //       builder: (context) => Congratulations(),
         // ));
       } catch (e) {
-        print('Not Successufully $e');
+        debugPrint('Not Successufully $e');
+        final snackBar = ShowSnackBar(context, e.toString(), 'Dismiss');
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
     }
+  }
+
+  SnackBar ShowSnackBar(context, String msg, String label) {
+    return SnackBar(
+      content: Text(msg),
+      backgroundColor: (Colors.black12),
+      action: SnackBarAction(
+        label: label,
+        backgroundColor: Colors.redAccent,
+        disabledTextColor: Colors.amberAccent,
+        disabledBackgroundColor: Colors.redAccent,
+        onPressed: () {
+          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        },
+      ),
+    );
   }
 
   //
@@ -199,7 +161,7 @@ class _VolunteerJoinState extends State<VolunteerJoin> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    return Container(
+    return SizedBox(
       width: width > 800 ? width * 0.4 : width * 0.8,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

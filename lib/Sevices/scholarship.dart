@@ -43,7 +43,7 @@ class ScholarshipPage extends StatelessWidget {
                     //width: 200,
                     child: const Center(
                       child: Text(
-                        'Pet Service Providers',
+                        'Scholarship Service Providers',
                         style: TextStyle(
                           fontSize: 30,
                           color: Colors.white,

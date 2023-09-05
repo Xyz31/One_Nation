@@ -50,7 +50,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   static const Color gradientStartColor = Color(0xff11998e);
-  static const Color gradientEndColor = Color(0xff0575E6);
+  static const Color gradientEndColor = Color.fromARGB(255, 29, 140, 250);
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -66,9 +66,10 @@ class _HomePageState extends State<HomePage> {
                   end: Alignment.centerRight,
                   begin: Alignment.topLeft,
                   colors: [
-                    Colors.cyan,
-                    Color.fromARGB(255, 24, 226, 226),
-                    Colors.cyan
+                    // Colors.cyan,
+                    // Color.fromARGB(255, 24, 226, 226),
+                    // Colors.cyan
+                    gradientStartColor, gradientEndColor,
                   ]),
             ),
             child: const AppBarMobile()),
