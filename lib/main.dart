@@ -16,8 +16,8 @@ void main() {
         projectId: "futter-web1",
         storageBucket: "futter-web1.appspot.com",
         messagingSenderId: "362107198579",
-        appId: "1:362107198579:web:396647095eeb29fe971e06",
-        measurementId: "G-RF675MY553"),
+        appId: "1:362107198579:web:ff406ae3dd1fd37d971e06",
+        measurementId: "G-2CJQX9X3CJ"),
   );
   runApp(const MyApp());
 }
@@ -49,8 +49,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  static const Color gradientStartColor = Color(0xff11998e);
-  static const Color gradientEndColor = Color.fromARGB(255, 29, 140, 250);
+  static var gradientStartColor = Colors.grey[300];
+
+  static var gradientEndColor = Colors.grey[500];
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -61,7 +62,7 @@ class _HomePageState extends State<HomePage> {
       drawer: Drawer(
         child: Container(
             padding: const EdgeInsets.all(8),
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               gradient: LinearGradient(
                   end: Alignment.centerRight,
                   begin: Alignment.topLeft,
@@ -69,7 +70,8 @@ class _HomePageState extends State<HomePage> {
                     // Colors.cyan,
                     // Color.fromARGB(255, 24, 226, 226),
                     // Colors.cyan
-                    gradientStartColor, gradientEndColor,
+                    gradientStartColor!,
+                    gradientEndColor!,
                   ]),
             ),
             child: const AppBarMobile()),
@@ -87,16 +89,18 @@ class _HomePageState extends State<HomePage> {
                     elevation: 0,
                     centerTitle: true,
                     flexibleSpace: Container(
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.only(
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(20),
                             topRight: Radius.circular(20),
                             bottomLeft: Radius.circular(20),
                             bottomRight: Radius.circular(20)),
                         gradient: LinearGradient(colors: [
-                          Color.fromARGB(255, 15, 192, 215),
-                          Colors.cyan,
-                          Color.fromARGB(255, 15, 192, 215),
+                          // Color.fromARGB(255, 15, 192, 215),
+                          // Colors.cyan,
+                          // Color.fromARGB(255, 15, 192, 215),
+                          Colors.grey[350]!,
+                          Colors.grey[400]!,
                         ]),
                       ),
                     ),

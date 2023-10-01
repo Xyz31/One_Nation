@@ -61,7 +61,7 @@ class _VolunteerJoinState extends State<VolunteerJoin> {
     if (kIsWeb) {
       try {
         FirebaseFirestore instance = FirebaseFirestore.instance;
-        await instance.collection('Volunteers').doc(name).set(datacollected);
+        await instance.collection('Volunteers').doc('kkk').set(datacollected);
         showConfettiDialog(context, 'Congratulations \nYou Are Now a Member');
 
         debugPrint('Successufully added');
@@ -198,7 +198,9 @@ class _VolunteerJoinState extends State<VolunteerJoin> {
           SizedBox(
             width: 500,
             height: 70,
-            child: TextField(
+            child: TextFormField(
+              // validator: ,
+              cursorColor: Colors.black54,
               controller: _emailcontroller,
               decoration: const InputDecoration(
                   labelText: 'Email : xyz@gmail.com',

@@ -30,7 +30,7 @@ class BottomRow extends StatelessWidget {
                   height: 20,
                 ),
                 Text(
-                  'Investing in Minds, Transforming Lives: Educating Underprivileged Children.',
+                  'Investing in Future, Transforming Lives: Educating Underprivileged Children.',
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w200),
                 )
               ],

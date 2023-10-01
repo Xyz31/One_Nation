@@ -10,16 +10,26 @@ class Footer extends StatefulWidget {
 class _FooterState extends State<Footer> {
   static const Color gradientStartColor = Color(0xff11998e);
   static const Color gradientEndColor = Color(0xff0575E6);
+  var c1 = Colors.grey[500];
+  var c2 = Colors.grey[600];
+  var c3 = Colors.grey[700];
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(0.0)),
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(0.0)),
           gradient: LinearGradient(
-              colors: [gradientStartColor, gradientEndColor],
-              begin: FractionalOffset(0.2, 0.2),
-              end: FractionalOffset(1.0, 1.0),
-              stops: [0.0, 1.0],
+              colors: [
+                // gradientStartColor, gradientEndColor
+                c1!,
+                c3!,
+                c1!,
+              ],
+              begin: Alignment.topLeft,
+              end: AlignmentDirectional.bottomEnd,
+              // begin: const FractionalOffset(0.2, 0.2),
+              // end: const FractionalOffset(1.0, 1.0),
+              // stops: const [0.0, 1.0],
               tileMode: TileMode.clamp),
         ),
         padding: const EdgeInsets.all(10),

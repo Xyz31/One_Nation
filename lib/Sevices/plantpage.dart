@@ -46,12 +46,20 @@ class _PlantPageState extends State<PlantPage> {
                   // back button
                   Align(
                     alignment: Alignment.centerLeft,
-                    child: IconButton(
-                        color: Colors.cyan,
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: const Icon(Icons.arrow_back)),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      onTapCancel: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Icon(Icons.arrow_back_ios_new),
+
+                      // onPressed: () {
+                      //   Navigator.pop(context);
+                      // },
+                      // icon: const Icon(Icons.arrow_back)),
+                    ),
                   ),
                   // Text at the bottom
                   Container(

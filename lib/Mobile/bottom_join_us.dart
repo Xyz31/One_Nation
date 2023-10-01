@@ -9,7 +9,7 @@ class BottomJoinUs extends StatelessWidget {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     return Container(
-      color: Colors.white54,
+      color: Colors.white60,
       padding: const EdgeInsets.all(8),
       child: Column(
         //mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -33,7 +33,7 @@ class BottomJoinUs extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30),
                   child: Text(
-                    'Investing in Minds, Transforming Lives: Educating Underprivileged Children.',
+                    'Investing in Future, Transforming Lives: Educating Underprivileged Children.',
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w200),
                   ),
                 )

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -27,18 +28,20 @@
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="favicon.png" />
 
   <title>one_nation</title>
   <link rel="manifest" href="manifest.json">
 
   <script type="module">
+
+
     // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics.js";
+    import { initializeApp } from "firebase/app";
+    import { getAnalytics } from "firebase/analytics";
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
-  
+
     // Your web app's Firebase configuration
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     const firebaseConfig = {
@@ -47,10 +50,10 @@
       projectId: "futter-web1",
       storageBucket: "futter-web1.appspot.com",
       messagingSenderId: "362107198579",
-      appId: "1:362107198579:web:396647095eeb29fe971e06",
-      measurementId: "G-RF675MY553"
+      appId: "1:362107198579:web:ff406ae3dd1fd37d971e06",
+      measurementId: "G-2CJQX9X3CJ"
     };
-  
+
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
@@ -63,32 +66,34 @@
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
   <style>
-    .container{
+    .container {
       width: 100vw;
-      height: 100vw;
+      height: 70vw;
+      position: absolute;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    .indicator{
-      width: 50vw;
+    .indicator {
+      width: 7vw;
     }
   </style>
 </head>
-<body>
+
+<body style = "overflow: hidden">
   <div id="loading_indicator" class="container">
-    <img class="indicator" src="web/assets/loadingweb.gif">
+    <img class="indicator" src="web/assets/loading-7528_256.gif ">
   </div>
   <script>
-    window.addEventListener('load', function(ev) {
+    window.addEventListener('load', function (ev) {
       // Download main.dart.js
       _flutter.loader.loadEntrypoint({
         serviceWorker: {
           serviceWorkerVersion: serviceWorkerVersion,
         },
-        onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine().then(function(appRunner) {
+        onEntrypointLoaded: function (engineInitializer) {
+          engineInitializer.initializeEngine().then(function (appRunner) {
             appRunner.runApp();
           });
         }
@@ -96,6 +101,13 @@
     });
   </script>
   <script>
+    window.addEventListener('flutter-first-frame', function () {
+      var el = document.getElementsByClassName('container')[0];
+      el.remove();
+    });
+  </script>
+  <!--
+     <script>
     window.onload = function(){
       setTimeout(function(){
         var loadingindicator = document.getElementById("loading_indicator");
@@ -105,5 +117,7 @@
       },5000);
     };
   </script>
+  -->
 </body>
+
 </html>

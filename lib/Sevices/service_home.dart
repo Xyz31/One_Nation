@@ -13,6 +13,7 @@ class ServiceHome extends StatefulWidget {
 }
 
 class _ServiceHomeState extends State<ServiceHome> {
+  var buttonColor = Colors.grey[350];
   Set<String> images = {
     'Assets/Images/pet2.jpg',
     'Assets/Images/plant2.jpg',
@@ -21,6 +22,7 @@ class _ServiceHomeState extends State<ServiceHome> {
   };
 
   Set<String> services = {'Pet', 'Plant', 'Scholarship', 'Disability Activism'};
+  final customOnServiceCardColor = {};
 
   void navigateToPetPage() {
     Navigator.push(
@@ -48,6 +50,7 @@ class _ServiceHomeState extends State<ServiceHome> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
 
     return Scaffold(
         backgroundColor: Colors.grey[300],
@@ -57,7 +60,8 @@ class _ServiceHomeState extends State<ServiceHome> {
           centerTitle: true,
           title: Text(
             'You Are One Click Away',
-            style: TextStyle(color: Colors.grey[800]),
+            style:
+                TextStyle(fontWeight: FontWeight.bold, color: Colors.black87),
           ),
         ),
         body: SizedBox(
@@ -76,8 +80,8 @@ class _ServiceHomeState extends State<ServiceHome> {
                           ? Column(
                               children: [
                                 SizedBox(
-                                  width: 300,
-                                  height: 200,
+                                  width: width / 2,
+                                  height: height / 5,
                                   child: Card(
                                     elevation: 8,
                                     child: Image.asset(
@@ -93,41 +97,47 @@ class _ServiceHomeState extends State<ServiceHome> {
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                Container(
-                                  height: 40,
-                                  width: 300,
-                                  padding: const EdgeInsets.all(1),
-                                  margin: const EdgeInsets.only(top: 10),
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey[350],
-                                    borderRadius: BorderRadius.circular(
-                                        10), // Adjust the radius as needed
+                                MouseRegion(
+                                  onExit: (event) => setState(() {
+                                    buttonColor = Colors.grey[350];
+                                  }),
+                                  onEnter: (event) => setState(() {
+                                    buttonColor = Colors.grey[250];
+                                  }),
+                                  child: Container(
+                                    height: 50,
+                                    width: width / 2,
+                                    decoration: BoxDecoration(
+                                      color: buttonColor,
+                                      borderRadius: BorderRadius.circular(
+                                          5), // Adjust the radius as needed
+                                    ),
+                                    child: CupertinoButton(
+                                        onPressed: () {
+                                          switch (i) {
+                                            case 0:
+                                              navigateToPetPage();
+                                              break;
+                                            case 1:
+                                              navigateToPlantPage();
+                                              break;
+                                            case 2:
+                                              navigateToScholarshipPage();
+                                              break;
+                                            case 3:
+                                              navigateToDisabilityPage();
+                                              break;
+                                          }
+                                        },
+                                        child: const Text(
+                                          'Click to Explore',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.w300,
+                                              letterSpacing: 1),
+                                        )),
                                   ),
-                                  child: CupertinoButton(
-                                      onPressed: () {
-                                        switch (i) {
-                                          case 0:
-                                            navigateToPetPage();
-                                            break;
-                                          case 1:
-                                            navigateToPlantPage();
-                                            break;
-                                          case 2:
-                                            navigateToScholarshipPage();
-                                            break;
-                                          case 3:
-                                            navigateToDisabilityPage();
-                                            break;
-                                        }
-                                      },
-                                      child: const Text(
-                                        'Click to Explore',
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w300,
-                                            letterSpacing: 2),
-                                      )),
                                 )
                               ],
                             )

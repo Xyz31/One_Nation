@@ -91,7 +91,7 @@ class _FeaturedTileState extends State<FeaturedTile> {
                         ),
                       ),
                       Text(
-                        'Below Poverty Line is enchmark used by the government of India economic disadvantage.',
+                        'Let\'s Join hands to support everyone access to resources which make humanity proud on us..',
                         style: TextStyle(
                           fontSize: 15,
                           color: Colors.white,
