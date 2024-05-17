@@ -53,21 +53,21 @@ class _ServiceHomeState extends State<ServiceHome> {
     final height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-        backgroundColor: Colors.grey[300],
-        appBar: AppBar(
-          //leading: Container(),
-          backgroundColor: Colors.grey[200],
-          centerTitle: true,
-          title: Text(
-            'You Are One Click Away',
-            style:
-                TextStyle(fontWeight: FontWeight.bold, color: Colors.black87),
-          ),
+      backgroundColor: Colors.grey[300],
+      appBar: AppBar(
+        //leading: Container(),
+        backgroundColor: Colors.grey[200],
+        centerTitle: true,
+        title: const Text(
+          'You Are One Click Away',
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black87),
         ),
-        body: SizedBox(
-          width: width,
-          child: SingleChildScrollView(
-            child: Column(children: [
+      ),
+      body: SizedBox(
+        width: width,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
               for (int i = 0; i < 4; i++)
                 Card(
                   elevation: 5,
@@ -99,10 +99,10 @@ class _ServiceHomeState extends State<ServiceHome> {
                                 ),
                                 MouseRegion(
                                   onExit: (event) => setState(() {
-                                    buttonColor = Colors.grey[350];
+                                    buttonColor = Colors.grey;
                                   }),
                                   onEnter: (event) => setState(() {
-                                    buttonColor = Colors.grey[250];
+                                    buttonColor = Colors.blue;
                                   }),
                                   child: Container(
                                     height: 50,
@@ -113,30 +113,31 @@ class _ServiceHomeState extends State<ServiceHome> {
                                           5), // Adjust the radius as needed
                                     ),
                                     child: CupertinoButton(
-                                        onPressed: () {
-                                          switch (i) {
-                                            case 0:
-                                              navigateToPetPage();
-                                              break;
-                                            case 1:
-                                              navigateToPlantPage();
-                                              break;
-                                            case 2:
-                                              navigateToScholarshipPage();
-                                              break;
-                                            case 3:
-                                              navigateToDisabilityPage();
-                                              break;
-                                          }
-                                        },
-                                        child: const Text(
-                                          'Click to Explore',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 17,
-                                              fontWeight: FontWeight.w300,
-                                              letterSpacing: 1),
-                                        )),
+                                      onPressed: () {
+                                        switch (i) {
+                                          case 0:
+                                            navigateToPetPage();
+                                            break;
+                                          case 1:
+                                            navigateToPlantPage();
+                                            break;
+                                          case 2:
+                                            navigateToScholarshipPage();
+                                            break;
+                                          case 3:
+                                            navigateToDisabilityPage();
+                                            break;
+                                        }
+                                      },
+                                      child: const Text(
+                                        'Click to Explore',
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.w300,
+                                            letterSpacing: 1),
+                                      ),
+                                    ),
                                   ),
                                 )
                               ],
@@ -148,6 +149,7 @@ class _ServiceHomeState extends State<ServiceHome> {
                                   width: 300,
                                   height: 200,
                                   child: Card(
+                                    elevation: 2,
                                     child: Image.asset(
                                       images.elementAt(i),
                                       fit: BoxFit.fill,
@@ -171,38 +173,41 @@ class _ServiceHomeState extends State<ServiceHome> {
                                         25), // Adjust the radius as needed
                                   ),
                                   child: ElevatedButton(
-                                      onPressed: () {
-                                        switch (i) {
-                                          case 0:
-                                            navigateToPetPage();
-                                            break;
-                                          case 1:
-                                            navigateToPlantPage();
-                                            break;
-                                          case 2:
-                                            navigateToScholarshipPage();
-                                            break;
-                                          case 3:
-                                            navigateToDisabilityPage();
-                                            break;
-                                        }
-                                      },
-                                      child: const Text(
-                                        'Click to Explore',
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w300,
-                                            letterSpacing: 2),
-                                      )),
+                                    onPressed: () {
+                                      switch (i) {
+                                        case 0:
+                                          navigateToPetPage();
+                                          break;
+                                        case 1:
+                                          navigateToPlantPage();
+                                          break;
+                                        case 2:
+                                          navigateToScholarshipPage();
+                                          break;
+                                        case 3:
+                                          navigateToDisabilityPage();
+                                          break;
+                                      }
+                                    },
+                                    child: const Text(
+                                      'Click to Explore',
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w300,
+                                          letterSpacing: 1),
+                                    ),
+                                  ),
                                 )
                               ],
                             ),
                     ),
                   ),
                 ),
-            ]),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

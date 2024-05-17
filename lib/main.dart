@@ -2,6 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:one_nation/Desktop/home_dekstop.dart';
 import 'package:one_nation/Mobile/appbar_mobile.dart';
+import 'package:one_nation/Sevices/disability.dart';
+import 'package:one_nation/Sevices/petpage.dart';
+import 'package:one_nation/Sevices/plantpage.dart';
+import 'package:one_nation/Sevices/scholarship.dart';
 
 import 'package:one_nation/Widgets/app_bar.dart';
 
@@ -35,7 +39,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
           visualDensity: VisualDensity.adaptivePlatformDensity,
-          fontFamily: 'Raleway'),
+          fontFamily: 'Albert'),
       home: const HomePage(),
     );
   }
@@ -83,53 +87,64 @@ class _HomePageState extends State<HomePage> {
               child: Padding(
                 padding: const EdgeInsets.all(8),
                 child: AppBar(
-                    scrolledUnderElevation: 10,
-                    iconTheme: IconThemeData(color: Colors.black),
-                    foregroundColor: Colors.grey,
-                    backgroundColor: Colors.transparent,
-                    // backgroundColor: Colors.grey[300],
-                    //iconTheme: const IconThemeData(color: Colors.grey),
-                    //backgroundColor: Colors.white.withOpacity(_opacity),
-                    elevation: 0,
-                    centerTitle: true,
-                    flexibleSpace: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(20),
-                            topRight: Radius.circular(20),
-                            bottomLeft: Radius.circular(20),
-                            bottomRight: Radius.circular(20)),
-                        gradient: LinearGradient(colors: [
+                  scrolledUnderElevation: 10,
+                  iconTheme: const IconThemeData(color: Colors.black),
+                  foregroundColor: Colors.grey,
+                  backgroundColor: Colors.transparent,
+                  // backgroundColor: Colors.grey[300],
+                  //iconTheme: const IconThemeData(color: Colors.grey),
+                  //backgroundColor: Colors.white.withOpacity(_opacity),
+                  elevation: 0,
+                  centerTitle: true,
+                  flexibleSpace: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20),
+                          bottomLeft: Radius.circular(20),
+                          bottomRight: Radius.circular(20)),
+                      gradient: LinearGradient(
+                        colors: [
                           // Color.fromARGB(255, 15, 192, 215),
                           // Colors.cyan,
                           // Color.fromARGB(255, 15, 192, 215),
                           Colors.grey.withOpacity(0.8),
                           Colors.grey[350]!,
                           Colors.grey.withOpacity(0.8),
-                        ]),
+                        ],
                       ),
                     ),
-                    title: const Text(
-                      'ONE NATION',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 26,
-                        fontWeight: FontWeight.w900,
-                        letterSpacing: 3,
-                      ),
-                    )),
+                  ),
+                  title: const Text(
+                    'ONE NATION',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 26,
+                      fontWeight: FontWeight.w900,
+                      letterSpacing: 3,
+                    ),
+                  ),
+                ),
               ),
             )
           : PreferredSize(
               preferredSize: Size(screenSize.width, 70),
-              child: const DesktopAppbar()),
+              child: DesktopAppbar(
+                scrollToIndex: scrollToSection,
+              )),
       body: LayoutBuilder(builder: (context, constraints) {
         if (constraints.maxWidth < 800) {
           return const Mobile();
         } else {
-          return const Desktop();
+          return Desktop();
         }
       }),
     );
+  }
+
+  void scrollToSection(int navIndex) {
+    // call function
+    final obj = Desktop();
+    obj.scrolltoIndex(navIndex);
   }
 }

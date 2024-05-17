@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class PetPage extends StatelessWidget {
-  Set<String> links = {
+  PetPage({super.key});
+
+  final Set<String> links = {
     'https://www.resqct.org/',
     'https://www.awbi.in/hawo.html',
     'https://www.mysurupinjrapole.org/',
@@ -11,7 +13,7 @@ class PetPage extends StatelessWidget {
     'https://www.peta.org',
     'https://bestfriends.org',
   };
-  Set<String> names = {
+  final Set<String> names = {
     'Animal Rescue & Rehab Trust ',
     'Honorary Animals Welfare Officer',
     'MYSORE PINJARAPOLE SOCIETY',
@@ -20,100 +22,109 @@ class PetPage extends StatelessWidget {
     'People for the Ethical Treatment of Animals (PETA) ',
     'Best Friends Animal Society',
   };
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
-      extendBody: true,
-      appBar: AppBar(),
       body: SingleChildScrollView(
-        child: Container(
-          color: Colors.grey,
-          child: Column(
-            children: [
-              Stack(
-                children: [
-                  // Image
-                  SizedBox(
-                    width: width,
-                    height: 400,
-                    child: Image.asset(
-                      'Assets/Images/pet2.jpg',
-                      fit: BoxFit.fill,
+        child: Column(
+          children: [
+            Stack(
+              children: [
+                Container(
+                  height: 400,
+                  width: width,
+                  child: Image.asset(
+                    "Assets/Images/pet2.jpg",
+                    fit: BoxFit.fill,
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(left: 20, top: 20),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(
+                      Icons.arrow_back_ios,
+                      size: 25,
+                      color: Colors.black.withOpacity(0.7),
                     ),
                   ),
-                  // back button
-                  Container(
-                    // padding: EdgeInsets.only(top: 15, left: 15),
-                    // alignment: Alignment.topLeft,
-                    padding: const EdgeInsets.only(left: 10, top: 10),
-                    child: IconButton(
+                ),
+                // Text at the bottom
+                Container(
+                  padding: const EdgeInsets.only(top: 340),
+                  //width: 200,
+                  child: const Center(
+                    child: Text(
+                      'Pet Service Providers',
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
                         color: Colors.white,
-                        onPressed: () {
-                          Navigator.pop(context);
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            for (int i = 0; i < names.length; i++)
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Container(
+                  margin: const EdgeInsets.only(top: 15),
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        blurRadius: 3,
+                        spreadRadius: 0.001,
+                        offset: const Offset(-3, -2),
+                      ),
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        blurRadius: 3,
+                        spreadRadius: 0.01,
+                        offset: const Offset(3, 2),
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  height: 50,
+                  width: width * 0.8,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        names.elementAt(i),
+                        style: const TextStyle(
+                            fontSize: 10, fontWeight: FontWeight.bold),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          _launchURL(links.elementAt(i));
                         },
-                        icon: const Icon(Icons.arrow_back)),
-                  ),
-                  // Text at the bottom
-                  Container(
-                    color: Colors.black.withOpacity(0.5),
-                    padding: const EdgeInsets.only(top: 400),
-                    //width: 200,
-                    child: const Center(
-                      child: Text(
-                        'plant Service Providers',
-                        style: TextStyle(
-                          fontSize: 30,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              // Other widgets below the image
-
-              for (int i = 0; i < names.length; i++)
-                Card(
-                  elevation: 7,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Container(
-                      height: 50,
-                      width: width * 0.8,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            child: Text(
-                              names.elementAt(i),
-                              style: const TextStyle(
-                                  fontSize: 10, fontWeight: FontWeight.bold),
-                            ),
+                        child: Text(
+                          'Click here',
+                          style: TextStyle(
+                            fontSize: 13,
+                            color: Colors.blue.withOpacity(0.6),
+                            decoration: TextDecoration.underline,
                           ),
-                          GestureDetector(
-                            onTap: () {
-                              _launchURL(links.elementAt(i));
-                            },
-                            child: const Text(
-                              'Click here',
-                              style: TextStyle(
-                                fontSize: 13,
-                                color: Colors.blue,
-                                decoration: TextDecoration.underline,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
+                        ),
+                      )
+                    ],
                   ),
-                )
-            ],
-          ),
+                ),
+              ),
+          ],
         ),
       ),
     );

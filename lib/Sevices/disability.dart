@@ -19,82 +19,106 @@ class Disability extends StatelessWidget {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(),
       body: SingleChildScrollView(
-        child: Container(
-          color: Colors.grey[300],
-          child: Column(
-            children: [
-              Stack(
-                children: [
-                  // Image
-                  SizedBox(
-                    width: width,
-                    height: 400,
-                    child: Image.asset(
-                      'Assets/Images/help.jpg',
-                      fit: BoxFit.fill,
+        child: Column(
+          children: [
+            Stack(
+              children: [
+                Container(
+                  height: 400,
+                  width: width,
+                  child: Image.asset(
+                    "Assets/Images/help.jpg",
+                    fit: BoxFit.fill,
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(left: 20, top: 20),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(
+                      Icons.arrow_back_ios,
+                      size: 25,
+                      color: Colors.black.withOpacity(0.7),
                     ),
                   ),
-                  // Text at the bottom
-                  Container(
-                    color: Colors.black.withOpacity(0.5),
-                    padding: const EdgeInsets.only(top: 400),
-                    //width: 200,
-                    child: const Center(
-                      child: Text(
-                        'Disability Service Providers',
-                        style: TextStyle(
-                          fontSize: 30,
-                          color: Colors.white,
+                ),
+                // Text at the bottom
+                Container(
+                  padding: const EdgeInsets.only(top: 340),
+                  //width: 200,
+                  child: const Center(
+                    child: Text(
+                      'Disability Service CareGivers',
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            for (int i = 0; i < names.length; i++)
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Container(
+                  margin: const EdgeInsets.only(top: 15),
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        blurRadius: 3,
+                        spreadRadius: 0.001,
+                        offset: const Offset(-3, -2),
+                      ),
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        blurRadius: 3,
+                        spreadRadius: 0.01,
+                        offset: const Offset(3, 2),
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  height: 50,
+                  width: width * 0.8,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        child: Text(
+                          names.elementAt(i),
+                          style: const TextStyle(
+                              fontSize: 10, fontWeight: FontWeight.bold),
                         ),
                       ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              // Other widgets below the image
-
-              for (int i = 0; i < names.length; i++)
-                Card(
-                  elevation: 7,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: SizedBox(
-                      height: 50,
-                      width: width * 0.8,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            names.elementAt(i),
-                            style: const TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.bold),
+                      GestureDetector(
+                        onTap: () {
+                          _launchURL(links.elementAt(i));
+                        },
+                        child: Text(
+                          'Click here',
+                          style: TextStyle(
+                            fontSize: 13,
+                            color: Colors.blue.withOpacity(0.6),
+                            decoration: TextDecoration.underline,
                           ),
-                          GestureDetector(
-                            onTap: () {
-                              _launchURL(links.elementAt(i));
-                            },
-                            child: const Text(
-                              'Click here',
-                              style: TextStyle(
-                                fontSize: 13,
-                                color: Colors.blue,
-                                decoration: TextDecoration.underline,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
+                        ),
+                      )
+                    ],
                   ),
-                )
-            ],
-          ),
+                ),
+              ),
+          ],
         ),
       ),
     );

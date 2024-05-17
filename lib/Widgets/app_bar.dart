@@ -6,7 +6,10 @@ class DesktopAppbar extends StatefulWidget {
   //final context;
   const DesktopAppbar({
     super.key,
+    required this.scrollToIndex,
   });
+
+  final Function(int) scrollToIndex;
   @override
   State<DesktopAppbar> createState() => _DesktopAppbarState();
 }
@@ -22,6 +25,8 @@ class _DesktopAppbarState extends State<DesktopAppbar> {
     false,
     false
   ];
+
+  _DesktopAppbarState();
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +50,7 @@ class _DesktopAppbarState extends State<DesktopAppbar> {
               child: const Text(
                 'ONE NATION',
                 style: TextStyle(
-                  color: Colors.blue,
+                  color: Colors.black,
                   fontSize: 36,
                   fontWeight: FontWeight.w900,
                   letterSpacing: 3,
@@ -62,7 +67,10 @@ class _DesktopAppbarState extends State<DesktopAppbar> {
                         value ? _isHovering[0] = true : _isHovering[0] = false;
                       });
                     },
-                    onTap: () {},
+                    onTap: () {
+                      widget.scrollToIndex(0);
+                      print("Home");
+                    },
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -84,10 +92,7 @@ class _DesktopAppbarState extends State<DesktopAppbar> {
                           child: Container(
                             height: 3,
                             width: 20,
-                            //color: Colors.blue,
-                            decoration: const BoxDecoration(
-                                gradient: LinearGradient(
-                                    colors: [Colors.red, Colors.cyan])),
+                            color: Colors.blue,
                           ),
                         )
                       ],
@@ -134,13 +139,19 @@ class _DesktopAppbarState extends State<DesktopAppbar> {
                     ),
                   ),
                   SizedBox(width: screenSize.width / 20),
+
+                  //ABOUT US
+
                   InkWell(
                     onHover: (value) {
                       setState(() {
                         value ? _isHovering[2] = true : _isHovering[2] = false;
                       });
                     },
-                    onTap: () {},
+                    onTap: () {
+                      print("About");
+                      widget.scrollToIndex(2);
+                    },
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -169,13 +180,18 @@ class _DesktopAppbarState extends State<DesktopAppbar> {
                     ),
                   ),
                   SizedBox(width: screenSize.width / 20),
+
+                  //CONTACT US
                   InkWell(
                     onHover: (value) {
                       setState(() {
                         value ? _isHovering[3] = true : _isHovering[3] = false;
                       });
                     },
-                    onTap: () {},
+                    onTap: () {
+                      print("Contact");
+                      widget.scrollToIndex(3);
+                    },
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
